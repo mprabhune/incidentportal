@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incident Portal</title>
+</head>
+<body>
+<h1>Incident Portal</h1>
+
+<form action="/incident" method="POST">
+  <label for="incidentNumber">Incident Number:</label>
+  <input type="text" id="incidentNumber" name="incidentNumber" required><br><br>
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required><br><br>
+
+  <label for="actionTaken">Action Taken:</label>
+  <textarea id="actionTaken" name="actionTaken" required></textarea><br><br>
+
+  <label for="actionRequired">Action Required:</label>
+  <textarea id="actionRequired" name="actionRequired" required></textarea><br><br>
+
+  <label for="remarks">Remarks:</label>
+  <textarea id="remarks" name="remarks" required></textarea><br><br>
+
+  <label for="assignedTo">Assigned To:</label>
+  <input type="text" id="assignedTo" name="assignedTo" required><br><br>
+
+  <button type="submit">Submit Incident</button>
+</form>
+
+<p th:text="${message}"></p>
+
+<h2>Existing Incidents:</h2>
+<ul>
+  <li th:each="incident : ${incidents}">
+    Incident #<span th:text="${incident.incidentNumber}"></span> -
+    <span th:text="${incident.remarks}"></span>
+  </li>
+</ul>
+</body>
+</html>
